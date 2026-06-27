@@ -137,7 +137,7 @@ void readFEN(std::string const& code)
 
 int main()
 {
-    readFEN(pos);
+    readFEN(start_pos);
     sf::RenderWindow window(sf::VideoMode(window_size, window_size), "Chess Program");
     window.setFramerateLimit(30);
     while (window.isOpen())

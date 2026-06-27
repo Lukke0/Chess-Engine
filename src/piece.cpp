@@ -1,4 +1,4 @@
-#include "include/piece.h"
+#include "piece.h"
 #include <stdexcept>
 #include <SFML/Graphics.hpp>
 
