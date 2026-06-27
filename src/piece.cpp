@@ -1,10 +1,10 @@
-#include "piece.h"
+#include "include/piece.h"
 #include <stdexcept>
 #include <SFML/Graphics.hpp>
 
 // Constructor for Piece
-Piece::Piece(std::pair<int, int> const& start, int const _size, int const v)
-    : position{}, window_size{ _size }, value{ v }
+Piece::Piece(std::pair<int, int> const& start, int const _size, int const v, bool const white)
+    : position{}, window_size{ _size }, value{ v }, white { white }
 {
     if (start.first >= 0 && start.first < 8 && start.second >= 0 && start.second < 8)
     {
@@ -22,7 +22,7 @@ Piece::Piece(std::pair<int, int> const& start, int const _size, int const v)
 void Piece::set_position(std::pair<int, int> const& new_pos)
 {
     my_sprite.setPosition(
-        new_pos.first * (window_size / 8),
+        new_pos.first * (window_size / 8) - 1.f,
         new_pos.second * (window_size / 8)
     );
 }
@@ -41,15 +41,108 @@ void Piece::set_texture(sf::Texture const& t)
     );
 }
 
-// Constructor for Pawn
-Pawn::Pawn(std::pair<int, int> const& start, int const _size, int const v)
-    : Piece{ start, _size, v }
+sf::Sprite const& Piece::get_sprite() const
 {
-    if (!texture.loadFromFile("assets/Chess_pawn_black.png"))
-    {
-        throw std::runtime_error("Could not load pawn_b texture");
-    }
+    return my_sprite;
+}
 
+// Constructor for Pawn
+Pawn::Pawn(std::pair<int, int> const& start, int const _size, bool const white)
+    : Piece{ start, _size, 1 , white}
+{
+    if (white)
+    {
+        if (!texture.loadFromFile("assets/Chess_pawn_white.png"))
+        {
+            throw std::runtime_error("Could not load pawn_w texture");
+        }
+    }
+    else
+    {
+        if (!texture.loadFromFile("assets/Chess_pawn_black.png"))
+        {
+            throw std::runtime_error("Could not load pawn_b texture");
+        }
+    }
     set_texture(texture);
-    set_position(start); // Ensure correct positioning after setting texture
+}
+
+Rook::Rook(std::pair<int, int> const& start, int const _size, bool const white)
+    : Piece { start, _size, 5, white }
+{ 
+    if (white)
+    {
+        if (!texture.loadFromFile("assets/Chess_rook_white.png"))
+        {
+            throw std::runtime_error("Could not load rook_w texture");
+        }
+    }
+    else
+    {
+        if (!texture.loadFromFile("assets/Chess_rook_black.png"))
+        {
+            throw std::runtime_error("Could not load rook_b texture");
+        }
+    }
+    set_texture(texture);
+}
+
+Knight::Knight(std::pair<int, int> const& start, int const _size, bool const white)
+    : Piece{ start, _size, 3, white }
+{
+    if (white)
+    {
+        if (!texture.loadFromFile("assets/Chess_knight_white.png"))
+        {
+            throw std::runtime_error("Could not load rook_w texture");
+        }
+    }
+    else
+    {
+        if (!texture.loadFromFile("assets/Chess_knight_black.png"))
+        {
+            throw std::runtime_error("Could not load rook_b texture");
+        }
+    }
+    set_texture(texture);
+}
+
+Bishop::Bishop(std::pair<int, int> const& start, int const _size, bool const white)
+    : Piece{ start, _size, 3, white }
+{
+    if (white)
+    {
+        if (!texture.loadFromFile("assets/Chess_bishop_white.png"))
+        {
+            throw std::runtime_error("Could not load bishop_w texture");
+        }
+    }
+    else
+    {
+        if (!texture.loadFromFile("assets/Chess_bishop_black.png"))
+        {
+            throw std::runtime_error("Could not load bishop_b texture");
+        }
+    }
+    set_texture(texture);
+}
+
+Queen::Queen(std::pair<int, int> const& start, int const _size, bool const white)
+    : Piece{ start, _size, 3, white }
+{
+    if (white)
+    {
+        if (!texture.loadFromFile("assets/Chess_queen_white.png"))
+        {
+            throw std::runtime_error("Could not load queen_w texture");
+        }
+    }
+    else
+    {
+        if (!texture.loadFromFile("assets/Chess_queen_black.png"))
+        {
+            throw std::runtime_error("Could not load queen_b texture");
+        }
+    }
+    set_texture(texture);
 }
