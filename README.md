@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # sfml-vs2022
 
 [![MSBuild](https://github.com/nathanrosspowell/sfml-vs2022/actions/workflows/msbuild.yml/badge.svg)](https://github.com/nathanrosspowell/sfml-vs2022/actions/workflows/msbuild.yml)
@@ -48,3 +49,6 @@ It's recommended to use a text editor and find and replace, for example, `Debug-
 [sfmlversion]: https://github.com/SFML/SFML/releases/tag/2.6.1 "SFML 2.6.1"
 [monogram]: https://datagoblin.itch.io/monogram "Monogram is a monospace bitmap font, free and CC0!"
 [cc0]: https://creativecommons.org/publicdomain/zero/1.0/ "creativecommons zero"
+=======
+# Chess-Engine
+>>>>>>> 3f86d4d01d0b3b7ad965c4c8f6c567fed2acefa4
