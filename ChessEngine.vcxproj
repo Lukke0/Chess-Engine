@@ -311,6 +311,7 @@
     <ClCompile Include="src\piece.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\FEN.h" />
     <ClInclude Include="include\piece.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
