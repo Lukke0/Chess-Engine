@@ -52,15 +52,15 @@ std::vector<std::unique_ptr<Piece>> FEN::parse(std::string const& code, int wind
             x = 0;
             y++;
         }
-        else if (std::isdigit(static_cast<unsigned char>(c)))
+       else if (std::isdigit(static_cast<unsigned char>(c)))
         {
-            if (c < 1 || c > 8)
+            int i { c - '0' };
+            if (i < 1 || i > 8)
             {
                 throw std::logic_error("Invalid digit in FEN code");
-                break;
             }
             std::cout << "blank space added: " << c << std::endl;
-            x += c - '0';
+            x += i;
         }
         else
         {
