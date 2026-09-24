@@ -6,6 +6,7 @@
 class Piece
 {
 public:
+	virtual ~Piece() = default;
 	Piece(std::pair<int, int> const& start, int const _size, int const v, bool const white);
 
 	void set_position(std::pair<int, int> const& new_pos);
@@ -64,4 +65,14 @@ public:
 private:
 	sf::Texture texture;
 };
+
+class King : public Piece
+{
+public:
+	King(std::pair<int, int> const& start, int const _size, bool const white);
+	
+private:
+	sf::Texture texture;
+};
+
 #endif
