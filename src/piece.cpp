@@ -146,3 +146,23 @@ Queen::Queen(std::pair<int, int> const& start, int const _size, bool const white
     }
     set_texture(texture);
 }
+
+King::King(std::pair<int, int> const& start, int const _size, bool const white)
+    : Piece{ start, _size, 3, white }
+{
+    if (white)
+    {
+        if (!texture.loadFromFile("assets/Chess_king_white.png"))
+        {
+            throw std::runtime_error("Could not load king_w texture");
+        }
+    }
+    else
+    {
+        if (!texture.loadFromFile("assets/Chess_king_black.png"))
+        {
+            throw std::runtime_error("Could not load king_b texture");
+        }
+    }
+    set_texture(texture);
+}

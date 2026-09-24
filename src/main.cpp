@@ -4,6 +4,7 @@
 
 #include "piece.h"
 #include "FEN.h"
+#include "board.h"
 
 #include<iostream>
 #include<vector>
@@ -12,8 +13,7 @@
 //Global variables.
 bool clicked{ false };
 int window_size{ 800 };
-std::vector<std::unique_ptr<Piece>> pieces;
-std::string start_pos("rnbq1bnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQ1BNR");
+std::string start_pos("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 std::string pos("5Q2/8/5P2/4k3/6K1/8/8/1B6 b - - 0 71");
 
 void Draw_board(sf::RenderWindow & window)
@@ -57,6 +57,7 @@ void Highlight(sf::RenderWindow& window)
     if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && clicked == false)
     {
         std::cout << "click at: " << square_pos_x << ", " << square_pos_y << std::endl;
+
         clicked = true;
     }
 
@@ -68,7 +69,7 @@ void Highlight(sf::RenderWindow& window)
 
 int main()
 {
-    pieces = FEN::parse(start_pos, window_size);
+    Board board(start_pos, window_size);
     sf::RenderWindow window(sf::VideoMode(window_size, window_size), "Chess Program");
     window.setFramerateLimit(30);
     while (window.isOpen())
@@ -82,13 +83,10 @@ int main()
             }
         }
 
+        // Drawing the board and pieces.
         Draw_board(window);
         Highlight(window);
-
-        for (auto const& e : pieces)
-        {
-            window.draw(e->get_sprite());
-        }
+        board.draw(window);
 
         window.display();
     }
