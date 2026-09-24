@@ -306,11 +306,13 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\board.cpp" />
     <ClCompile Include="src\FEN.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\piece.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\board.h" />
     <ClInclude Include="include\FEN.h" />
     <ClInclude Include="include\piece.h" />
   </ItemGroup>
